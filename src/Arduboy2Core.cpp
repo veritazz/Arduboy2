@@ -67,9 +67,13 @@ const PROGMEM uint8_t Arduboy2Core::lcdBootProgram[] = {
 
   // Display On
   0xAF,
-
+#ifdef VERTICAL_ADDRESSING
+  // set display mode = vertical addressing mode (0x01)
+  0x20, 0x01,
+#else
   // set display mode = horizontal addressing mode (0x00)
   0x20, 0x00,
+#endif
 
   // set col address range
   // 0x21, 0x00, COLUMN_ADDRESS_END,
